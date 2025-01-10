@@ -1,5 +1,5 @@
 import { RecoilRoot } from "recoil"
-import Home from "./componets/Home";
+import Home from "./components/Home";
 
 export default function App(){
     return(
