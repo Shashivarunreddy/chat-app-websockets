@@ -12,7 +12,6 @@ export default function Home() {
   return (
     <div className="h-screen w-screen bg-white dark:bg-black p-12 font-jetbrains flex items-center justify-center transition-all duration-500 ">
       {roomId ? <ChatBox socket={socket} /> : <Landing socket={socket} />}
-      {/* <Mode /> */}
     </div>
   );
 }
