@@ -8,14 +8,17 @@ export default function Notification(){
     
     const [displayNotification,setDisplayNotification]=useRecoilState(displayNotificationState)
    
-    useEffect(()=>{
-        const ref= setTimeout(()=>{
-            setDisplayNotification((prev)=>{
-                return { type: prev.type, display:false}
-            })
-            clearTimeout(ref)
-        },2500)
-    },[displayNotification.display])
+    useEffect(() => {
+        const ref = setTimeout(() => {
+            setDisplayNotification((prev) => {
+                return { type: prev.type, display: false };
+            });
+        }, 2500);
+    
+        // Cleanup the timeout if the component unmounts or dependency changes
+        return () => clearTimeout(ref);
+    }, [displayNotification.display]);
+    
     
     return <div className={`${displayNotification.display ? 'opacity-1':'opacity-0'} mx-auto  absolute z-50 bottom-5 sm:right-10 transition-opacity duration-200  border border-black rounded p-2 bg-white shadow dark:bg-black dark:text-white dark:border-white`}>
     {
